@@ -11,9 +11,6 @@ from tweepy import Stream
 import tweepy,time
 from redditbot import *
 
-#must be the user's ID. get it from here: https://tweeterid.com/
-
-
 #twitter setup
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
