@@ -4,7 +4,7 @@ import OAuth2Util
 from credentials import *
 
 r = praw.Reddit('pakalu twitter -> reddit ver 0.1'
-		'URL: github.com/iceiscold86/pakalubot')
+		'URL: github.com/Brennanb414/pakalubot')
 o = OAuth2Util.OAuth2Util(r)
 o.refresh(force=True)
 
