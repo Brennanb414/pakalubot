@@ -1,3 +1,9 @@
+#Original author: github.com/Brennanb414
+#requires:
+#	-tweepy 3.3.0
+#	-praw
+#	-OAuth2Util
+#
 import logging
 import traceback
 from credentials import *
