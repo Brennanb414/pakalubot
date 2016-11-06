@@ -35,7 +35,7 @@ class MyStreamListener(StreamListener):
 			"\nText: "+str(status.text))
 			#PostTweet(status.text,status.author.screen_name,status.id)
 		except Exception as e:
-			print("Tweet error: "+str(traceback.format_exc)+ "\n E: "+e)			
+			print("Tweet error: "+str(traceback.format_exc)+ "\n E: "+str(e))			
 			
     def on_error(self, status):
 	if status == 420:
