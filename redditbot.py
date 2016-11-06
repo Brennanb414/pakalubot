@@ -9,7 +9,7 @@ o = OAuth2Util.OAuth2Util(r)
 o.refresh(force=True)
 
 def PostTweet(text,user,tweetID):
-	subreddit = r.get_subreddit("oneoneoneoneone")
+	subreddit = r.get_subreddit("pakalupapito")
 	title = "pakalu: "+text
 	twitterURL = 'https://twitter.com/'+str(user)+'/status/'+str(tweetID)
 	
