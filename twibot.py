@@ -1,11 +1,3 @@
-#Original author: github.com/Brennanb414
-#
-#requires:
-#	-tweepy 3.3.0
-#	-praw
-#	-OAuth2Util
-#
-
 import logging
 import traceback
 from credentials import *
@@ -28,12 +20,11 @@ class MyStreamListener(StreamListener):
         # called when user tweets, this makes it so only pakalu's tweets get posted, and not all the RTs
 	if(status.author.screen_name == "pakalupapito"):
 		try:		
-			#raise Exception("hey, shit's fucked")
 			print("\n------Tweet info-------"
 			"\nAuthor: "+str(status.author.screen_name)+
 			"\nID: "+str(status.id)+
 			"\nText: "+str(status.text))
-			#PostTweet(status.text,status.author.screen_name,status.id)
+			PostTweet(status.text,status.author.screen_name,status.id)
 		except Exception as e:
 			print("Tweet error: "+str(traceback.format_exc)+ "\n E: "+str(e))			
 			
@@ -51,4 +42,3 @@ if __name__ == '__main__':
 
 	#must be the user's ID. get it from here: https://tweeterid.com/
 	twitterStream.filter(follow=['1582341876'])
-
