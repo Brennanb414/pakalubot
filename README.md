@@ -9,6 +9,6 @@ instructions:
 
 
 #requires:
-#	-tweepy 3.3.0
-#	-praw
-#	-OAuth2Util
+	-tweepy 3.3.0
+	-praw
+	-OAuth2Util
