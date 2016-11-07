@@ -50,5 +50,4 @@ if __name__ == '__main__':
 		#must be the user's ID. get it from here: https://tweeterid.com/
 		twitterStream.filter(follow=['1582341876'])
 	except Exception as e:
-		print("Stream Error: "+str(e))			
-		continue
+		print("\nStream Error: "+str(e))	
