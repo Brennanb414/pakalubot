@@ -15,6 +15,7 @@ import tweepy,time
 from redditbot import *
 from requests.exceptions import Timeout, ConnectionError
 from requests.packages.urllib3.exceptions import ReadTimeoutError
+import ssl
 
 #twitter setup
 
@@ -47,10 +48,15 @@ class MyStreamListener(StreamListener):
 	return True
 	
 if __name__ == '__main__':
-	try:
-		listener = MyStreamListener()
-		twitterStream = Stream(auth, listener)
-		#must be the user's ID. get it from here: https://tweeterid.com/
-		twitterStream.filter(follow=['1582341876'])
-	except (Timeout, ssl.SSLError, ReadTimeoutError, ConnectionError) as e:
-		print("\nStream Error: "+str(e))	
+	while True:
+		try:
+			listener = MyStreamListener()
+			twitterStream = Stream(auth, listener)
+			#must be the user's ID. get it from here: https://tweeterid.com/
+			twitterStream.filter(follow=['1582341876'])
+		except (Timeout, ssl.SSLError, ReadTimeoutError, ConnectionError) as e:
+			print("\nStream Error: "+str(e))
+			print("\nRetrying in 5 minutes")
+			time.sleep(5*60)
+		else:
+			break	
