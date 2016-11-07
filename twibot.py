@@ -1,9 +1,11 @@
-#Original author: github.com/Brennanb414
+#Original author: https://github.com/Brennanb414
 #requires:
 #	-tweepy 3.3.0
 #	-praw
 #	-OAuth2Util
 #
+
+
 import logging
 import traceback
 from credentials import *
@@ -11,7 +13,8 @@ from tweepy import StreamListener
 from tweepy import Stream
 import tweepy,time
 from redditbot import *
-
+from requests.exceptions import Timeout, ConnectionError
+from requests.packages.urllib3.exceptions import ReadTimeoutError
 
 #twitter setup
 
@@ -49,5 +52,5 @@ if __name__ == '__main__':
 		twitterStream = Stream(auth, listener)
 		#must be the user's ID. get it from here: https://tweeterid.com/
 		twitterStream.filter(follow=['1582341876'])
-	except Exception as e:
+	except (Timeout, ssl.SSLError, ReadTimeoutError, ConnectionError) as e:
 		print("\nStream Error: "+str(e))	
