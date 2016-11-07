@@ -41,10 +41,14 @@ class MyStreamListener(StreamListener):
 		print("\nwait over")
 	else:
 		print("Error was: "+str(status))
-
+	return True
+	
 if __name__ == '__main__':
-	listener = MyStreamListener()
-	twitterStream = Stream(auth, listener)
-
-	#must be the user's ID. get it from here: https://tweeterid.com/
-	twitterStream.filter(follow=['1582341876'])
+	try:
+		listener = MyStreamListener()
+		twitterStream = Stream(auth, listener)
+		#must be the user's ID. get it from here: https://tweeterid.com/
+		twitterStream.filter(follow=['1582341876'])
+	except Exception as e:
+		print("Stream Error: "+str(e))			
+		continue
