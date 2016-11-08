@@ -29,14 +29,15 @@ class MyStreamListener(StreamListener):
     def on_status(self, status):
         # called when user tweets, this makes it so only pakalu's tweets get posted, and not all the RTs
 	if(status.author.screen_name == "pakalupapito"):
-		try:		
-			print("\n------Tweet info-------"
-			"\nAuthor: "+str(status.author.screen_name)+
-			"\nID: "+str(status.id)+
-			"\nText: "+str(status.text))
-			PostTweet(status.text,status.author.screen_name,status.id)
-		except Exception as e:
-			print("Tweet error: "+str(traceback.format_exc)+ "\n E: "+str(e))			
+		while True:
+			try:		
+				print("\n------Tweet info-------"
+				"\nAuthor: "+str(status.author.screen_name)+
+				"\nID: "+str(status.id)+
+				"\nText: "+str(status.text))
+				PostTweet(status.text,status.author.screen_name,status.id)
+			except Exception as e:
+				print("Tweet error: "+str(traceback.format_exc)+ "\n E: "+str(e))			
 			
     def on_error(self, status):
 	if status == 420:
