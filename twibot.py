@@ -37,7 +37,9 @@ class MyStreamListener(StreamListener):
 				"\nText: "+str(status.text))
 				PostTweet(status.text,status.author.screen_name,status.id)
 			except Exception as e:
-				print("Tweet error: "+str(traceback.format_exc)+ "\n E: "+str(e))			
+				print("Tweet error: "+str(traceback.format_exc)+ "\n E: "+str(e))
+				print("\nRetrying in 1 min")
+				time.sleep(1*60)			
 			
     def on_error(self, status):
 	if status == 420:
@@ -57,7 +59,7 @@ if __name__ == '__main__':
 			twitterStream.filter(follow=['1582341876'])
 		except (Timeout, ssl.SSLError, ReadTimeoutError, ConnectionError) as e:
 			print("\nStream Error: "+str(e))
-			print("\nRetrying in 5 minutes")
-			time.sleep(5*60)
+			print("\nRetrying in 1 minute")
+			time.sleep(1*60)
 		else:
 			break	
