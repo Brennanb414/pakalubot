@@ -39,7 +39,9 @@ class MyStreamListener(StreamListener):
 			except Exception as e:
 				print("Tweet error: "+str(traceback.format_exc)+ "\n E: "+str(e))
 				print("\nRetrying in 1 min")
-				time.sleep(1*60)			
+				time.sleep(1*60)
+			else:
+				break			
 			
     def on_error(self, status):
 	if status == 420:
