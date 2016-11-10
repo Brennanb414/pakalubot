@@ -59,7 +59,7 @@ if __name__ == '__main__':
 			twitterStream = Stream(auth, listener)
 			#must be the user's ID. get it from here: https://tweeterid.com/
 			twitterStream.filter(follow=['1582341876'])
-		except (Timeout, ssl.SSLError, ReadTimeoutError, ConnectionError) as e:
+		except Exception as e:
 			print("\nStream Error: "+str(e))
 			print("\nRetrying in 1 minute")
 			time.sleep(1*60)
